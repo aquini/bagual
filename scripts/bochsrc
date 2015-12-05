@@ -1,0 +1,23 @@
+memory: host=32, guest=32
+romimage: file=$HOME/opt/bochs/share/bochs/BIOS-bochs-latest, address=0xfffe0000
+vgaromimage: file=$HOME/opt/bochs/share/bochs/VGABIOS-lgpl-latest
+#boot: floppy
+#floppy_bootsig_check: disabled=0
+#floppya: 1_44=/dev/loop0, status=inserted
+# no floppyb
+ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=none
+ata0-slave: type=none
+ata0-slave:  type=cdrom, path="xiru.iso", status=inserted
+boot: cdrom
+ata1: enabled=1, ioaddr1=0x170, ioaddr2=0x370, irq=15
+pci: enabled=1, chipset=i440fx
+vga: extension=vbe, update_freq=5
+cpu: count=1, ips=1000000, model=bx_generic, reset_on_triple_fault=1, cpuid_limit_winnt=0, ignore_bad_msrs=1, mwait_is_nop=0
+log: bochsout.log
+#log: -
+logprefix: %t%e%d
+mouse: type=ps2, enabled=0, toggle=ctrl+mbutton
+#magic_break debug
+#magic_break: enabled=1
+#display_library: x, options="gui_debug"
